@@ -175,9 +175,7 @@ https://github.com/rotejin/tomari-guruguru
 
 ## 自分のキャラで作るには
 
-キャラクター参照画像を1枚用意して、画像生成AIに「このキャラで差し替えて」と頼むだけでも入口にはなります。
-
-ただし、このアプリで動かすには最終的に **5×5角度シートを6枚** 作る必要があります。
+このアプリで動かすには最終的に **5×5角度シートを6枚** 作る必要があります。
 
 必要な6枚:
 
@@ -193,43 +191,12 @@ F_目閉じ_口開け.png
 おすすめの流れ:
 
 1. 自分のキャラクター参照画像を用意する
-2. `01_画像生成用テンプレ.png` を角度テンプレートとして添付する
-3. `01_画像生成用プロンプト.txt` の最初の指示を使って、`A_目開け_口とじ.png` 相当の5×5シートを作る
-4. 同じ画像に対して追加指示を出し、目閉じ版・口中間版・口開け版を作る
-5. 6枚のPNGを `新キャラ資料/` フォルダに入れる
-6. `tools/slice_character_sheets.py` で `slices2/` に切り出す
-7. ローカルで表示確認する
+2. `01_画像生成用テンプレ.png` と合わせてChatGPT Images 2.0に添付する
+3. `01_画像生成用プロンプト.txt` の指示を使って目閉じ・目開け×口とじ・口中間版・口開け版の5×5シート6枚を作る
+4. 6枚のPNGを `新キャラ資料/` フォルダに入れる
+5. CodexやClaudeCodeに新キャラ差し替えの指示を出す
 
 詳しい注意点や検証方法は `新キャラ差し替え手順.md` を参照してください。
-
----
-
-## スライス画像を再生成する例
-
-新しい6枚の元画像を `新キャラ資料/` に入れた場合の例です。
-
-```powershell
-python tools\slice_character_sheets.py `
-  --source "新キャラ資料" `
-  --sheets-out "sheets" `
-  --uploads-out "uploads" `
-  --slices-out "slices2" `
-  --format webp `
-  --jobs 4 `
-  --component-mode `
-  --min-component-area 80 `
-  --alpha-threshold 64 `
-  --remove-gray-residue
-```
-
-生成後、以下のようなファイルが150枚できます。
-
-```text
-slices2/A/r0c0.webp ... r4c4.webp
-slices2/B/r0c0.webp ... r4c4.webp
-...
-slices2/F/r0c0.webp ... r4c4.webp
-```
 
 ---
 
