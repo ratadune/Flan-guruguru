@@ -1,7 +1,6 @@
 sheets/
 uploads/
 新キャラ資料/
-桜草メイ素材/
 *.psd
 *.clip
 *.kra
@@ -10,7 +9,8 @@ __pycache__/
 *.pyc
 node_modules/
 dist/
-public/slices3/
+public/*
+!public/slices2/
 screenshot*
 .DS_Store
 Thumbs.db
