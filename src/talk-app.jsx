@@ -222,7 +222,7 @@ function App() {
     engine.attachAudioEl(el);
     engine.resume();
     el.loop = true; // ループ再生。1回だけにしたい場合は false に
-    el.src = import.meta.env.BASE_URL + 'sample-voice.wav';
+    el.src = import.meta.env.BASE_URL + 'sample-voice.mp3';
     el.play().catch(() => {});
     setFileName('sample-voice.wav');
   }
