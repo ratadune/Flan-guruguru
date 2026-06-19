@@ -210,9 +210,21 @@ function App() {
     const el = audioElRef.current;
     engine.attachAudioEl(el);
     engine.resume();
+    el.loop = false;
     el.src = URL.createObjectURL(f);
     el.play().catch(() => {});
     setFileName(f.name);
+  }
+
+  // サンプル音声をワンタップで再生（読み込みボタンは別に残す）
+  function playSample() {
+    const el = audioElRef.current;
+    engine.attachAudioEl(el);
+    engine.resume();
+    el.loop = true; // ループ再生。1回だけにしたい場合は false に
+    el.src = import.meta.env.BASE_URL + 'sample-voice.wav';
+    el.play().catch(() => {});
+    setFileName('sample-voice.wav');
   }
 
   const allFrames = useMemo(() => {
@@ -291,6 +303,16 @@ function App() {
           ♪ 音声ファイル
           <input type="file" accept="audio/*" onChange={onFilePick} style={{ display: 'none' }}></input>
         </label>
+
+        <button onClick={playSample} style={{
+          display: 'flex', alignItems: 'center', gap: 8,
+          fontFamily: 'inherit', fontWeight: 700, fontSize: 14, color: inkColor,
+          background: 'transparent',
+          border: `1.5px solid ${lineColor}`, borderRadius: 12,
+          padding: '9px 16px', cursor: 'pointer', minHeight: 44
+        }}>
+          ▶ サンプル再生
+        </button>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 5, minWidth: 150 }}>
           <div style={{ fontSize: 11, color: subColor, letterSpacing: '0.06em', display: 'flex', justifyContent: 'space-between' }}>
