@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/tomari-guruguru/' : '/',
+  base: command === 'build' ? '/Flan-guruguru/' : '/',
   plugins: [react()],
   server: {
     host: '127.0.0.1',
