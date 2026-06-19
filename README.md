@@ -1,6 +1,7 @@
 ろてじん(rotejin)さんからのfork<br>
 
 キャラにフランお姉ちゃんに改変のデモ用
+![Flan](docs/flan.png)
 
 ---
 
